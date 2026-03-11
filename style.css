@@ -950,6 +950,7 @@ body.nav-open {
   box-sizing: border-box;
   cursor: pointer;
   background: transparent;
+  text-decoration: none;
 }
 
 .card-link p {
@@ -1625,6 +1626,7 @@ body.nav-open {
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
+  text-align: center;
 }
 
 .teachers-page-title {
@@ -1633,6 +1635,8 @@ body.nav-open {
   font-family: Inter, sans-serif;
   font-size: clamp(28px, 4vw, 44px);
   font-weight: 600;
+  text-align: center;
+  margin: 0 auto;
   line-height: 1.1;
 }
 
