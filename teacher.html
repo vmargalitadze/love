@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Преподаватель — Love &amp; Sew</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a class="logo" href="index.html" aria-label="На главную">
+                <img src="img/Logo.png" alt="Love &amp; Sew logo">
+            </a>
+
+            <nav class="nav">
+                <a href="index.html#courses" class="nav-link">Курсы</a>
+                <a href="index.html#students" class="nav-link">Работы учеников</a>
+                <a href="index.html#teachers" class="nav-link">Преподаватели</a>
+                <a href="index.html#call" class="nav-link">Контакты</a>
+            </nav>
+
+            <div class="header-right">
+                <div class="header-phone">
+                    <span class="phone-number">+7 (902) 800 78 88</span>
+                    <span class="phone-address">ул. Новинка, 10, 4 этаж</span>
+                </div>
+            </div>
+            <button class="header-button">
+                <p>Записаться</p>
+            </button>
+
+            <button type="button" class="burger" aria-label="Открыть меню" aria-expanded="false">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="nav-overlay" aria-hidden="true"></div>
+    <div class="nav-panel" aria-hidden="true">
+        <nav class="nav-panel-inner">
+            <a href="index.html#courses" class="nav-panel-link">Курсы</a>
+            <a href="index.html#students" class="nav-panel-link">Работы учеников</a>
+            <a href="index.html#teachers" class="nav-panel-link">Преподаватели</a>
+            <a href="index.html#call" class="nav-panel-link">Контакты</a>
+        </nav>
+        <div class="nav-panel-footer">
+            <div class="nav-panel-phone">+7 (902) 800 78 88</div>
+            <div class="nav-panel-address">ул. Новинка, 10, 4 этаж</div>
+            <button type="button" class="nav-panel-btn">Записаться</button>
+        </div>
+    </div>
+
+    <main class="teacher-page">
+        <section class="teacher-hero">
+            <div class="container teacher-hero-inner">
+                <img id="teacher-photo" class="teacher-hero-img" src="img/teachers/1.jpg" alt="Преподаватель">
+                <div class="teacher-card">
+                    <h1 id="teacher-name" class="teacher-name">Преподаватель</h1>
+                    <p id="teacher-courses" class="teacher-courses"></p>
+                    <div class="teacher-items">
+                        <div class="teacher-item">
+                            <p>Технолог</p>
+                        </div>
+                        <div class="teacher-item">
+                            <p>Дизайнер одежды</p>
+                        </div>
+                        <div class="teacher-item">
+                            <p>Опыт работы в сфере производства одежды более 15 лет</p>
+                        </div>
+
+                        <div class="teacher-item">
+                            <p>Специалист по немецкой системе конструирования одежды «M.Muller & Sohn»</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="teacher-education">
+            <div class="container">
+                <h2 class="teacher-section-title">Образование</h2>
+                <div id="teacher-education" class="education-grid"></div>
+            </div>
+        </section>
+
+        <section class="teachers other-teachers">
+            <div class="container">
+                <div class="other-teachers-header">
+                    <h2 class="other-teachers-title">Другие преподаватели</h2>
+                    <div class="teachers-nav">
+                        <button type="button" class="teachers-arrow teachers-arrow-prev" aria-label="Назад">
+                            <img src="img/teachers/left.png" alt="Arrow">
+                        </button>
+                        <button type="button" class="teachers-arrow teachers-arrow-next" aria-label="Вперёд">
+                            <img src="img/teachers/right.png" alt="Arrow">
+                        </button>
+                    </div>
+                </div>
+                <div class="teachers-carousel-wrap">
+                    <div class="teachers-items" id="other-teachers-items"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="call" id="call">
+        <div class="container">
+            <div class="call-body">
+                <img class="call-image" src="img/call.png" alt="Image">
+                <div class="call-items">
+                    <div class="call-text">
+                        <h1>Оставьте заявку <br /> на курс</h1>
+                        <p>Свяжемся с вами в удобное время <br /> и подробно всё расскажем.</p>
+                    </div>
+
+                    <form class="call-form" action="send-form.php" method="post">
+                        <input type="text" name="name" class="call-input" placeholder="Имя" required>
+                        <input type="tel" name="phone" class="call-input" placeholder="Номер телефона" required>
+                        <label class="call-checkbox-label">
+                            <input type="checkbox" name="consent" class="call-checkbox" required>
+                            <span>Соглашаюсь на обработку <a href="#" class="call-link">Персональных данных</a></span>
+                        </label>
+                        <button type="submit" class="call-submit">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">love &amp; sew</div>
+                <h2 class="footer-heading">Наши контакты</h2>
+                <a href="tel:+79028007885" class="footer-phone">+7 (902) 800 78 85</a>
+                <div class="footer-social">
+                    <div class="link">
+                        <img class="link-img" src="img/tg.png" alt="Image">
+                    </div>
+                    <div class="link">
+                        <img class="link-img" src="img/vb.png" alt="Image">
+                    </div>
+                    <div class="link">
+                        <img class="link-img" src="img/wk.png" alt="Image">
+                    </div>
+                    <div class="link">
+                        <img class="link-img" src="img/wh.png" alt="Image">
+                    </div>
+                </div>
+                <p class="footer-address">г. Пермь, ул. Куйбышева 10, 4 этаж</p>
+                <a href="#" class="footer-map-btn">Смотреть на карте</a>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-col footer-company">
+                    <div>ООО «ЛЮБИ И ШЕЙ»</div>
+                    <div>ИНН 5902065537</div>
+                    <div>КПП 590201001</div>
+                </div>
+                <nav class="footer-col footer-nav">
+                    <a href="index.html#courses">Курсы</a>
+                    <a href="index.html#students">Работы учеников</a>
+                    <a href="index.html#teachers">Преподаватели</a>
+                    <a href="index.html#call">Контакты</a>
+                </nav>
+                <div class="footer-col footer-legal">
+                    <a href="#">Пользовательское соглашение</a>
+                    <a href="#">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="mobile-menu.js"></script>
+    <script type="module" src="teacher-page.js"></script>
+</body>
+
+</html>
+
