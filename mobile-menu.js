@@ -276,12 +276,61 @@
     });
   };
 
+  var initLessensCarousel = function () {
+    var wrap = document.querySelector('.lessens-carousel-wrap');
+    var prev = document.querySelector('.lessens-arrow-prev');
+    var next = document.querySelector('.lessens-arrow-next');
+    if (!wrap || !prev || !next) return;
+
+    prev.addEventListener('click', function (e) {
+      e.preventDefault();
+      wrap.scrollBy({ left: -320, behavior: 'smooth' });
+    });
+
+    next.addEventListener('click', function (e) {
+      e.preventDefault();
+      wrap.scrollBy({ left: 320, behavior: 'smooth' });
+    });
+  };
+
+  var initQuestionsAccordion = function () {
+    var headers = document.querySelectorAll('.question-header');
+    if (!headers || headers.length === 0) return;
+
+    headers.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var item = btn.closest('.question-item');
+        var content = document.getElementById(btn.getAttribute('aria-controls'));
+        var isOpen = item && item.classList.contains('question-item-open');
+
+        document.querySelectorAll('.question-item').forEach(function (other) {
+          other.classList.remove('question-item-open');
+          var otherContent = other.querySelector('.question-content');
+          if (otherContent) {
+            otherContent.hidden = true;
+            var otherHeader = other.querySelector('.question-header');
+            if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        if (!item) return;
+        if (!isOpen) {
+          item.classList.add('question-item-open');
+          if (content) content.hidden = false;
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  };
+
   initMenu();
   initStudentsCarousel();
   initTeachersCarousel();
   initScrollToCall();
   initCoursesToggle();
   initMasterToggle();
+  initLessensCarousel();
+  initQuestionsAccordion();
 
   document.addEventListener('teachers:rendered', function () {
     initTeachersCarousel();

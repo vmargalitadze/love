@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Преподаватели — Love &amp; Sew</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <a class="logo" href="index.html" aria-label="На главную">
+          <img src="img/Logo.png" alt="Love &amp; Sew logo" />
+        </a>
+
+        <nav class="nav">
+          <a href="index.html#courses" class="nav-link">Курсы</a>
+          <a href="index.html#students" class="nav-link">Работы учеников</a>
+          <a href="index.html#history" class="nav-link">История</a>
+          <a href="index.html#teachers" class="nav-link">Преподаватели</a>
+          <a href="index.html#events" class="nav-link">Мероприятия</a>
+          <a href="index.html#corporate" class="nav-link">Корпоративные предложения</a>
+          <a href="index.html#online-school" class="nav-link">Онлайн-школа</a>
+          <a href="index.html#news" class="nav-link">Новости</a>
+          <a href="contacts.html" class="nav-link">Контакты</a>
+        </nav>
+
+        <div class="header-right">
+          <div class="header-phone">
+            <span class="phone-number">+7 (902) 800 78 88</span>
+            <span class="phone-address">ул. Новинка, 10, 4 этаж</span>
+          </div>
+        </div>
+        <button class="header-button">
+          <p>Записаться</p>
+        </button>
+
+        <button
+          type="button"
+          class="burger"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+        >
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+      </div>
+    </header>
+
+    <div class="nav-overlay" aria-hidden="true"></div>
+    <div class="nav-panel" aria-hidden="true">
+      <nav class="nav-panel-inner">
+        <a href="index.html#courses" class="nav-panel-link">Курсы</a>
+        <a href="index.html#students" class="nav-panel-link">Работы учеников</a>
+        <a href="index.html#teachers" class="nav-panel-link">Преподаватели</a>
+        <a href="contacts.html" class="nav-panel-link">Контакты</a>
+      </nav>
+      <div class="nav-panel-footer">
+        <div class="nav-panel-phone">+7 (902) 800 78 88</div>
+        <div class="nav-panel-address">ул. Новинка, 10, 4 этаж</div>
+        <button type="button" class="nav-panel-btn">Записаться</button>
+      </div>
+    </div>
+
+    <main class="teachers-page">
+      <section class="teachers-page-hero">
+        <div class="container teachers-page-hero-inner">
+          <h1 class="teachers-page-title">Преподаватели</h1>
+          <a class="teachers-page-back" href="index.html#teachers"
+            >← Назад на главную</a
+          >
+        </div>
+      </section>
+
+      <section class="teachers-page-list">
+        <div class="container">
+          <div class="teachers-page-grid" id="teachers-all-items"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">love &amp; sew</div>
+          <h2 class="footer-heading">Наши контакты</h2>
+          <a href="tel:+79028007885" class="footer-phone">+7 (902) 800 78 85</a>
+          <div class="footer-social">
+            <div class="link">
+              <img class="link-img" src="img/tg.png" alt="Image" />
+            </div>
+            <div class="link">
+              <img class="link-img" src="img/vb.png" alt="Image" />
+            </div>
+            <div class="link">
+              <img class="link-img" src="img/wk.png" alt="Image" />
+            </div>
+            <div class="link">
+              <img class="link-img" src="img/wh.png" alt="Image" />
+            </div>
+          </div>
+          <p class="footer-address">г. Пермь, ул. Куйбышева 10, 4 этаж</p>
+          <a href="contacts.html" class="footer-map-btn">Смотреть на карте</a>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-col footer-company">
+            <div>ООО «ЛЮБИ И ШЕЙ»</div>
+            <div>ИНН 5902065537</div>
+            <div>КПП 590201001</div>
+          </div>
+          <nav class="footer-col footer-nav">
+            <a href="index.html#courses">Курсы</a>
+            <a href="index.html#students">Работы учеников</a>
+            <a href="index.html#teachers">Преподаватели</a>
+            <a href="index.html#history">История</a>
+            <a href="index.html#events">Мероприятия</a>
+            <a href="index.html#corporate">Корпоративные предложения</a>
+            <a href="index.html#online-school">Онлайн-школа</a>
+            <a href="index.html#news">Новости</a>
+            <a href="contacts.html">Контакты</a>
+          </nav>
+          <div class="footer-col footer-legal">
+            <a href="#">Пользовательское соглашение</a>
+            <a href="#">Политика конфиденциальности</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="mobile-menu.js"></script>
+    <script type="module" src="teachers-page.js"></script>
+  </body>
+</html>
