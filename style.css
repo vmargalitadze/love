@@ -12,6 +12,8 @@ body {
   margin: 0 auto;
 }
 
+
+
 .container {
   width: 100%;
   max-width: 1300px;
@@ -122,9 +124,10 @@ body {
   height: 44px;
   padding: 10px;
   border: none;
-  background: none;
+  background-color: #cb1c4f;
   cursor: pointer;
-  color: #050254;
+  color: #ffffff;
+  border-radius: 50%;
 }
 
 .burger-line {
@@ -265,6 +268,9 @@ body.nav-open {
   gap: 8px;
   text-align: right;
   margin: 0 auto;
+}
+.students-images img{
+  width: 100% !important;
 }
   .footer-company {
     align-items: center;
@@ -1435,6 +1441,7 @@ body.nav-open {
   align-items: center;
   justify-content: center;
   gap: 20px;
+  flex-wrap: nowrap;
 
   max-width: 1300px;
   margin: 0 auto;
@@ -1442,9 +1449,16 @@ body.nav-open {
 }
 
 .students-images img {
-  width: 530px;
+  display: none;
+  width: calc((100% - 40px) / 3);
   height: 650px;
   border-radius: 20px;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.students-images img.is-active {
+  display: block;
 }
 
 .why {
@@ -1843,6 +1857,14 @@ body.nav-open {
   .contacts-map-embed {
     min-height: 320px;
   }
+
+  .teachers-intro .teachers-title {
+    margin-bottom: 24px;
+    font-size: 30px !important;
+  }
+ .students-images img{
+  width: 100% !important;
+ }  
 }
 
 .teachers-inner {
@@ -1857,6 +1879,7 @@ body.nav-open {
 
 .teachers-intro .teachers-title {
   margin-bottom: 24px;
+ 
 }
 
 .teachers-intro-img {
@@ -2116,6 +2139,22 @@ body.nav-open {
   }
 }
 
+@media (max-width: 480px) {
+  .lessens-items {
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  /* On small screens show 1 slide per view */
+  .lessens-item {
+    flex: 0 0 100%;
+  }
+
+  .lessens-item-img {
+    height: 200px;
+  }
+}
+
 .reviews {
   margin-top: 120px;
   padding: 60px 20px;
@@ -2370,6 +2409,8 @@ body.nav-open {
   margin-top: 8px;
 }
 
+
+
 .teacher-education {
   margin-top: 80px;
   padding: 60px 0;
@@ -2460,7 +2501,9 @@ body.nav-open {
   .teacher-hero-inner {
     grid-template-columns: 1fr;
   }
-
+.students-header{
+  width: 100% !important;
+}
   .teacher-hero-img {
     max-height: none;
 
@@ -2873,13 +2916,16 @@ body.nav-open {
     font-size: 13px;
   }
 }
-
+.courses-page{
+  margin-bottom: 20px;
+}
 .call {
   margin-top: 120px;
   background-color: #ffffff;
   width: 100%;
   padding: 0 20px;
   box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
 .call-body {
@@ -3136,7 +3182,7 @@ body.nav-open {
   color: #fff;
   padding: 64px 0 32px;
   border-radius: 50px 50px 0 0;
-  margin-top: 20px;
+ 
 }
 
 .footer-top {
@@ -3323,7 +3369,102 @@ body.nav-open {
     object-fit: cover;
 }
 }
+@media (max-width: 600px) {
+  .why-boxes-inner {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+.history-text {
+  color: #050254;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
 
+.footer-map-btn {
+  display: flex;
+  padding: 20px 40px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  align-self: stretch;
+  border-radius: 10px;
+  background-color: #FFF;
+  color: #921439;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+  /* Footer responsiveness */
+  .footer {
+    padding: 48px 0 24px;
+    border-radius: 40px 40px 0 0;
+    margin-top: 12px;
+  }
+
+  .footer-top {
+    padding-bottom: 24px;
+    margin-bottom: 20px;
+  }
+
+  .footer-brand {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  .footer-heading {
+    font-size: 18px;
+    margin: 0 0 12px;
+  }
+
+  .footer-phone {
+    font-size: 26px;
+    margin-bottom: 16px;
+  }
+
+  .footer-social {
+    margin-bottom: 16px;
+  }
+
+  .footer-social-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .footer-address {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .footer-bottom {
+    gap: 16px;
+    text-align: center;
+  }
+
+  .footer-col {
+    text-align: center;
+  }
+
+  .footer-nav {
+    justify-content: center;
+    gap: 8px 16px;
+  }
+
+  .footer-legal {
+    text-align: center;
+  }
+
+}
 
 .teacher-items{
   margin-top: 24px;
@@ -3348,4 +3489,87 @@ body.nav-open {
   font-weight: 400;
   line-height: 1.2;
   color: #050254;
+}
+
+@media (max-width: 320px) {
+  .footer-map-btn {
+    display: flex;
+    padding: 20px 40px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    align-self: stretch;
+    border-radius: 10px;
+    background-color: #FFF;
+    color: #921439;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+
+/* History page */
+.history-page {
+  width: 100%;
+  background-color: #ffe9f1;
+}
+
+.history-section {
+  padding: 48px 0 80px;
+}
+
+.history-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 44px 40px;
+  box-sizing: border-box;
+}
+
+.history-title {
+  margin: 0 0 28px;
+  color: #050254;
+  font-family: Inter, sans-serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.history-text {
+  color: #050254;
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.history-text p {
+  margin: 0 0 14px;
+}
+
+.history-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+}
+
+.history-bullets li {
+  margin: 6px 0;
+}
+
+@media (max-width: 768px) {
+  .history-section {
+    padding: 32px 0 56px;
+  }
+
+  .history-card {
+    padding: 24px 16px;
+  }
 }

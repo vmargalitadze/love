@@ -56,34 +56,41 @@
     var images = imagesWrap.querySelectorAll('img');
     if (!images || images.length <= 1) return;
 
-    var activeIndex = 0;
+    var getVisibleCount = function () {
+      return window.innerWidth <= 768 ? 1 : 3;
+    };
 
+    // First visible image index (not the count).
+    var activeStartIndex = 0;
     for (var i = 0; i < images.length; i++) {
       if (images[i].classList.contains('is-active')) {
-        activeIndex = i;
+        activeStartIndex = i;
         break;
       }
     }
 
-    var setActive = function (index) {
-      activeIndex = (index + images.length) % images.length;
+    var setActive = function (startIndex) {
+      var visibleCount = Math.min(getVisibleCount(), images.length);
+      activeStartIndex = (startIndex + images.length) % images.length;
+
       for (var j = 0; j < images.length; j++) {
-        if (j === activeIndex) {
-          images[j].classList.add('is-active');
-        } else {
-          images[j].classList.remove('is-active');
-        }
+        images[j].classList.remove('is-active');
+      }
+
+      for (var k = 0; k < visibleCount; k++) {
+        var idx = (activeStartIndex + k) % images.length;
+        images[idx].classList.add('is-active');
       }
     };
 
-    setActive(activeIndex);
+    setActive(activeStartIndex);
 
     var prev = function () {
-      setActive(activeIndex - 1);
+      setActive(activeStartIndex - 1);
     };
 
     var next = function () {
-      setActive(activeIndex + 1);
+      setActive(activeStartIndex + 1);
     };
 
     var buttons = students.querySelectorAll('.students-button');
@@ -105,6 +112,11 @@
         });
       })(buttons[k]);
     }
+
+    window.addEventListener('resize', function () {
+      // Update visible count when switching between mobile/desktop.
+      setActive(activeStartIndex);
+    });
   };
 
   var initTeachersCarousel = function () {
@@ -280,17 +292,57 @@
     var wrap = document.querySelector('.lessens-carousel-wrap');
     var prev = document.querySelector('.lessens-arrow-prev');
     var next = document.querySelector('.lessens-arrow-next');
-    if (!wrap || !prev || !next) return;
+    if (!wrap) return;
+    if (wrap.dataset.carouselInit === 'true') return; // prevent double-binding
+    if (!prev || !next) return;
+
+    var items = wrap.querySelectorAll('.lessens-item');
+    if (!items || items.length <= 1) return;
+
+    wrap.dataset.carouselInit = 'true';
+
+    var getStep = function () {
+      if (items.length >= 2) {
+        // Move exactly by the distance between the first two items.
+        var step = items[1].offsetLeft - items[0].offsetLeft;
+        if (step > 0) return step;
+      }
+
+      return items[0].getBoundingClientRect().width || 280;
+    };
+
+    var updateButtons = function () {
+      var maxScroll = wrap.scrollWidth - wrap.clientWidth;
+      var left = wrap.scrollLeft;
+      var atStart = left <= 1;
+      var atEnd = left >= maxScroll - 1;
+
+      prev.disabled = atStart;
+      next.disabled = atEnd;
+      prev.setAttribute('aria-disabled', atStart ? 'true' : 'false');
+      next.setAttribute('aria-disabled', atEnd ? 'true' : 'false');
+    };
+
+    var scrollByStep = function (dir) {
+      var step = getStep();
+      wrap.scrollBy({ left: dir * step, behavior: 'smooth' });
+    };
 
     prev.addEventListener('click', function (e) {
       e.preventDefault();
-      wrap.scrollBy({ left: -320, behavior: 'smooth' });
+      if (prev.disabled) return;
+      scrollByStep(-1);
     });
 
     next.addEventListener('click', function (e) {
       e.preventDefault();
-      wrap.scrollBy({ left: 320, behavior: 'smooth' });
+      if (next.disabled) return;
+      scrollByStep(1);
     });
+
+    wrap.addEventListener('scroll', updateButtons, { passive: true });
+    window.addEventListener('resize', updateButtons);
+    updateButtons();
   };
 
   var initQuestionsAccordion = function () {
@@ -323,6 +375,49 @@
     });
   };
 
+  var initReviewsCarousel = function () {
+    var wrap = document.querySelector('.review-carousel');
+    if (!wrap) return;
+    if (wrap.dataset.carouselInit === 'true') return;
+
+    var prev = wrap.querySelector('.review-arrow-prev');
+    var next = wrap.querySelector('.review-arrow-next');
+    if (!prev || !next) return;
+
+    var cardImg = wrap.querySelector('.review-card img');
+    if (!cardImg) return;
+
+    var images = ['img/rev2.png', 'img/rev3.png', 'img/rev4.png', 'img/rev5.png'];
+
+    // Find current index from image src (fallback to 0).
+    var getCurrentIndex = function () {
+      var current = cardImg.getAttribute('src') || '';
+      for (var i = 0; i < images.length; i++) {
+        if (current.indexOf(images[i]) !== -1) return i;
+      }
+      return 0;
+    };
+
+    var index = getCurrentIndex();
+
+    var setIndex = function (nextIndex) {
+      index = (nextIndex + images.length) % images.length;
+      cardImg.setAttribute('src', images[index]);
+    };
+
+    prev.addEventListener('click', function (e) {
+      e.preventDefault();
+      setIndex(index - 1);
+    });
+
+    next.addEventListener('click', function (e) {
+      e.preventDefault();
+      setIndex(index + 1);
+    });
+
+    wrap.dataset.carouselInit = 'true';
+  };
+
   initMenu();
   initStudentsCarousel();
   initTeachersCarousel();
@@ -330,6 +425,7 @@
   initCoursesToggle();
   initMasterToggle();
   initLessensCarousel();
+  initReviewsCarousel();
   initQuestionsAccordion();
 
   document.addEventListener('teachers:rendered', function () {
